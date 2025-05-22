@@ -1,0 +1,21 @@
+Descriptive Analysis for test.csv
+
+Numeric features summary:
+       transaction_id     user_id       amount  frequency_last_24h       fraud
+count      250.000000  250.000000   250.000000          250.000000  250.000000
+mean       488.188000  121.960000  1398.245760            1.908000    0.028000
+std        288.810663   72.198955   858.051801            1.351608    0.165304
+min          1.000000    2.000000    10.630000            0.000000    0.000000
+25%        222.250000   58.500000   682.570000            1.000000    0.000000
+50%        487.000000  122.000000  1330.095000            2.000000    0.000000
+75%        734.750000  180.500000  2169.390000            3.000000    0.000000
+max        998.000000  248.000000  2980.130000            6.000000    1.000000
+
+Categorical features summary:
+                  date_time location     ip_address device transaction_type
+count                   250      250            250    250              250
+unique                  250       14            250      3                2
+top     2025-03-28 14:28:41   Berlin  36.27.148.183  phone        in-person
+freq                      1       26              1     90              128
+
+End of analysis for test.csv

@@ -25,7 +25,7 @@ transaction_types = ['online', 'in-person']
 
 # Generate columns
 transaction_id = np.arange(1, n_rows + 1)
-user_id = np.random.randint(1, 500, size = n_rows)
+user_id = np.random.randint(1, 250, size = n_rows)
 amount = np.round(np.random.uniform(1, 3000, size = n_rows), 2)
 date_time = [random_date_time(start_date, datetime.now()) for _ in range(n_rows)]
 location = np.random.choice(cities, size = n_rows)
