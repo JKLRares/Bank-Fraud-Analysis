@@ -1,0 +1,19 @@
+Constantinescu Rares - 313CA
+
+Se realizeaza implementarea unei aplicatii care verifica tranzactii bancare frauduloase.
+
+Tipul problemei este de clasificare.
+
+Setul de date principal este generat de generate_data.py, care creeaza un set de data in format csv. Setul de date generate are 1000 de linii, a cate 10
+parametrii relevanti. Acesti 10 parametrii au diverse tipuri de date, spre exemplu numere intregi, reale sau stringuri.
+
+Setul de date principal (all_data.csv) este impartit in doua seturi de date de catre split_data.csv. Dupa impartire, test.csv va avea 25% din exemplele din
+all_data.csv, iar train.csv va avea 75% din exemplele din all_data.csv.
+
+Setul de date de testare este folosit pentru a evalua acuratetea modelului, iar setul de date de antrenare este folosit pentru a antrena modelul.
+
+Setul de date genereaza date random pentru diversi parametrii, folosind seedul 12345. Data si ora generate sunt random, din ultimul an. Locatiile, dispozitivele
+si tipurile de tranzactii sunt generate random, dintr-o lista data de mana pentru fiecare dintre ele. Sumele tranzactionate sunt numere intre 1 si 3000 cu 2 zecimale.
+Probabilitatea ca o tranzactie sa fie de tip fraud se foloseste de un bias care presupuna ca tranzactiile unor sume mai mari sunt mai probabile sa fie frauduloase,
+asa ca daca suma tranzactiei este mai mare de 2000, probabilitatea ca aceasta sa fie frauduloasa este de 10%, altfel este de 2%. Fraudalitatea este 0/1 in
+functie de probabilitatea de fraudare calculata random anterior.

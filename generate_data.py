@@ -19,7 +19,6 @@ def random_date_time(start, end):
 	time = start + timedelta(seconds = random_second)
 	return time.replace(microsecond = 0)
 
-# === Sample pools ===
 cities = ['Slatina', 'Bucharest', 'New York', 'Los Angeles', 'Chicago', 'Craiova', 'Cluj', 'Miami', 'London', 'Berlin', 'Paris', 'Tokyo', 'Sydney', 'Constanta']
 devices = ['phone', 'computer', 'laptop']
 transaction_types = ['online', 'in-person']
@@ -35,7 +34,7 @@ device = np.random.choice(devices, size = n_rows)
 transaction_type = np.random.choice(transaction_types, size = n_rows)
 freq = np.random.poisson(lam = 2, size = n_rows)
 
-# Bias, higher amounts slightly more likely to be fraud
+# Bias higher amounts slightly more likely to be fraud
 fraud_probs = np.where(amount > 2000, 0.1, 0.02)
 labels = np.random.binomial(1, fraud_probs)
 
