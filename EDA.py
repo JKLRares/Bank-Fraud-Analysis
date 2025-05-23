@@ -77,3 +77,17 @@ for file in datasets:
 	plt.tight_layout()
 	plt.savefig(os.path.join(plots_dir, f"{file.replace('.csv', '')}_correlation_heatmap.png"))
 	plt.close()
+
+	# Violin plots for numeric features by fraud class
+	if 'fraud' in df.columns:
+		for col in numeric_cols:
+			plt.figure()
+			data0 = df[df['fraud'] == 0][col]
+			data1 = df[df['fraud'] == 1][col]
+			plt.violinplot([data0, data1], showmeans=True)
+			plt.xticks([1, 2], ['Normal', 'Fraud'])
+			plt.title(f'Violin plot of {col} by Fraud - {file}')
+			plt.ylabel(col)
+			plt.tight_layout()
+			plt.savefig(os.path.join(plots_dir, f"{file.replace('.csv', '')}_{col}_violin_vs_fraud.png"))
+			plt.close()
