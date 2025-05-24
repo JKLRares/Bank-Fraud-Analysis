@@ -21,7 +21,3 @@ if __name__ == '__main__':
     # Save splits
     train_df.to_csv(train_f, index = False)
     test_df.to_csv(test_f, index = False)
-
-    print(
-        f"Data set split complete: train = {len(train_df)} rows into '{train_f}', test = {len(test_df)} rows into '{test_f}'"
-    )

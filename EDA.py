@@ -95,55 +95,50 @@ for file in datasets:
 			plt.close()
 
 
-train_df = pd.read_csv('train.csv').dropna()
-test_df  = pd.read_csv('test.csv').dropna()
+output_path = 'randomforest.txt'
+with open(output_path, 'w') as out:
+	train_df = pd.read_csv('train.csv').dropna()
+	test_df  = pd.read_csv('test.csv').dropna()
 
-# Separate features/target
-X_train = train_df.drop(columns=['transaction_id', 'fraud'])
-y_train = train_df['fraud']
-X_test  = test_df.drop(columns=['transaction_id', 'fraud'])
-y_test  = test_df['fraud']
+	# Separate features/target
+	X_train = train_df.drop(columns=['transaction_id', 'fraud'])
+	y_train = train_df['fraud']
+	X_test  = test_df.drop(columns=['transaction_id', 'fraud'])
+	y_test  = test_df['fraud']
 
-# One-hot encode categorical variables consistent with labs
-X_train = pd.get_dummies(X_train, drop_first=True)
-X_test  = pd.get_dummies(X_test, drop_first=True)
-# Align columns of test to train
-X_test = X_test.reindex(columns=X_train.columns, fill_value=0)
+	# One-hot encode categorical variables consistent with labs
+	X_train = pd.get_dummies(X_train, drop_first=True)
+	X_test  = pd.get_dummies(X_test, drop_first=True)
+	# Align columns of test to train
+	X_test = X_test.reindex(columns=X_train.columns, fill_value=0)
 
-# Initialize and fit random forest
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
-rf.fit(X_train, y_train)
+	# Initialize and fit random forest
+	rf = RandomForestClassifier(random_state=1234)
+	rf.fit(X_train, y_train)
 
-# Predict and evaluate
-y_pred = rf.predict(X_test)
-y_prob = rf.predict_proba(X_test)[:, 1]
+	# Predict and evaluate
+	y_pred = rf.predict(X_test)
+	out.write("=== Random Forest Results ===\n")
+	out.write(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}\n\n")
+	out.write("Classification Report:\n")
+	out.write(classification_report(y_test, y_pred) + "\n")
+	out.write("Confusion Matrix:\n")
+	cm = confusion_matrix(y_test, y_pred)
+	out.write(np.array2string(cm) + "\n")
 
-cm = confusion_matrix(y_test, y_pred)
-plt.figure()
-plt.imshow(cm, interpolation='nearest', cmap='Blues')
-plt.title('Confusion Matrix')
-plt.colorbar()
-tick_marks = np.arange(2)
-classes = ['Normal', 'Fraud']
-plt.xticks(tick_marks, classes)
-plt.yticks(tick_marks, classes)
-plt.xlabel('Predicted')
-plt.ylabel('True')
-for i in range(cm.shape[0]):
-	for j in range(cm.shape[1]):
-		plt.text(j, i, cm[i, j], ha='center', va='center')
-plt.tight_layout()
-plt.savefig(os.path.join(plots_dir, 'confusion_matrix.png'))
-plt.close()
-
-# Importance
-importances = rf.feature_importances_
-indices = np.argsort(importances)[::-1]
-features = X_train.columns
-plt.figure(figsize=(8,6))
-plt.bar(range(len(importances)), importances[indices], align='center')
-plt.xticks(range(len(importances)), features[indices], rotation=90)
-plt.title('Feature Importances')
-plt.tight_layout()
-plt.savefig(os.path.join(plots_dir, 'feature_importances.png'))
-plt.close()
+	# Confusion matrix
+	cm = confusion_matrix(y_test, y_pred)
+	plt.figure()
+	plt.imshow(cm, interpolation='nearest', cmap='Blues')
+	plt.title('Confusion Matrix')
+	plt.colorbar()
+	ticks = np.arange(2)
+	plt.xticks(ticks, ['Normal', 'Fraud'])
+	plt.yticks(ticks, ['Normal', 'Fraud'])
+	plt.xlabel('Predicted'); plt.ylabel('True')
+	for i in range(cm.shape[0]):
+		for j in range(cm.shape[1]):
+			plt.text(j, i, cm[i, j], ha='center', va='center')
+	plt.tight_layout()
+	plt.savefig(os.path.join(plots_dir, 'confusion_matrix.png'))
+	plt.close()
