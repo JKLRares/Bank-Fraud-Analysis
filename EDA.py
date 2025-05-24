@@ -50,7 +50,8 @@ for file in datasets:
 	# Generate bar plots for categorical columns
 	for col in categorical_cols:
 		plt.figure()
-		df[col].value_counts().plot(kind='bar')
+		top = df[col].value_counts().nlargest(10)
+		top.plot(kind='bar')
 		plt.title(f'Countplot of {col} - {file}')
 		plt.xlabel(col)
 		plt.ylabel('Count')
