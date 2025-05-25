@@ -34,7 +34,7 @@ device = np.random.choice(devices, size = n_rows)
 transaction_type = np.random.choice(transaction_types, size = n_rows)
 freq = np.random.poisson(lam = 2, size = n_rows)
 
-# Bias higher amounts slightly more likely to be fraud
+# Bias higher amounts slightly more likely to be frud
 fraud_probs = np.where(amount > 2250, 0.85, 0.03)
 labels = np.random.binomial(1, fraud_probs)
 
