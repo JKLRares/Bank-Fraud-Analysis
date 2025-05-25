@@ -15,5 +15,16 @@ Setul de date de testare este folosit pentru a evalua acuratetea modelului, iar 
 Setul de date genereaza date random pentru diversi parametrii, folosind seedul 12345. Data si ora generate sunt random, din ultimul an. Locatiile, dispozitivele
 si tipurile de tranzactii sunt generate random, dintr-o lista data de mana pentru fiecare dintre ele. Sumele tranzactionate sunt numere intre 1 si 3000 cu 2 zecimale.
 Probabilitatea ca o tranzactie sa fie de tip fraud se foloseste de un bias care presupuna ca tranzactiile unor sume mai mari sunt mai probabile sa fie frauduloase,
-asa ca daca suma tranzactiei este mai mare de 2000, probabilitatea ca aceasta sa fie frauduloasa este de 10%, altfel este de 2%. Fraudalitatea este 0/1 in
+asa ca daca suma tranzactiei este mai mare de 2250, probabilitatea ca aceasta sa fie frauduloasa este de 85%, altfel este de 3%. Fraudalitatea este 0/1 in
 functie de probabilitatea de fraudare calculata random anterior.
+
+EDA.py contine implementarea principala a cerintelor.
+	-6a) este realizat prin dropna
+	-6b) scrie in fisierele _descriptive rezultatele obtinute pentru coloanele numerice, respectiv caegorice
+	-6c) pentru variabile numerice salveaza histogramele, iar pentru cele categorice gaseste top 10 cele mai folosite categorii si salveaza bar plotul acestora
+	-6d) genereaza box ploturi pentru a identifica valorile aberante
+	-6e) calculeaza corelatia dintre coloanele numerice si o afiseaza ca un heatmap
+	-6f) se foloseste de violin ploturi pentru a arata distributia valorilor unei caracteristici pentru fiecare clasa
+
+	-7 Elimina liniile cu date lipsa. Transforma variabilele categorice in valori numerice. Foloseste un model random forest. Evalueaza modelul antrenat pe train.csv
+pe setul de test si salveaza: acuratetea, precizia, recall-uri si F1-scoreul. Genreaza si matricea de confuzie pe care o salveaza si ca imagine
