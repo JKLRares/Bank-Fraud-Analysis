@@ -1,0 +1,675 @@
+{
+  "benchmark_version": "0.2.0",
+  "config": {
+    "alert_budget": 0.05,
+    "fn_cost": 25.0,
+    "fp_cost": 1.0,
+    "recall_target": 0.8,
+    "rows": 20000,
+    "seed": 2026
+  },
+  "data_sha256": "827c931751a1d475f8938f01c1139a08ade0400200265b57ddc5bb0809d6c98e",
+  "dependencies": {
+    "joblib": "1.4.2",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.13.1"
+  },
+  "generator_version": "iid-context-v1",
+  "limitations": [
+    "Designed synthetic associations; no evidence of real banking performance.",
+    "Scores are not calibrated real-world fraud probabilities.",
+    "One seed and one holdout; sampling uncertainty is not quantified.",
+    "Validation selects model and thresholds; validation estimates are optimistic.",
+    "Alert budget applies to validation only; test or deployed volume may exceed it.",
+    "Costs are illustrative units; no measured operational or monetary assumptions.",
+    "Stress scenarios are simulations; they cannot establish real-world robustness."
+  ],
+  "protocol": "iid stratified 60/20/20; train-only fit; validation AP; no refit",
+  "python": "3.10.12",
+  "selected_model": "logistic_regression",
+  "selection_metric": "validation average precision",
+  "split_summary": {
+    "test": {
+      "fraud_count": 228,
+      "prevalence": 0.057,
+      "rows": 4000
+    },
+    "train": {
+      "fraud_count": 683,
+      "prevalence": 0.056916666666666664,
+      "rows": 12000
+    },
+    "validation": {
+      "fraud_count": 228,
+      "prevalence": 0.057,
+      "rows": 4000
+    }
+  },
+  "stress_at_frozen_f1_threshold": {
+    "concept_shift": {
+      "accuracy": 0.87675,
+      "alert_count": 307,
+      "alert_rate": 0.07675,
+      "average_precision": 0.08969667234011888,
+      "confusion_matrix": [
+        [
+          3472,
+          272
+        ],
+        [
+          221,
+          35
+        ]
+      ],
+      "f1": 0.12433392539964476,
+      "fraud_count": 256,
+      "illustrative_cost_per_transaction": 1.44925,
+      "precision": 0.11400651465798045,
+      "prevalence": 0.064,
+      "recall": 0.13671875,
+      "roc_auc": 0.588668953659188,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "covariate_shift": {
+      "accuracy": 0.8135,
+      "alert_count": 721,
+      "alert_rate": 0.18025,
+      "average_precision": 0.24814225856504787,
+      "confusion_matrix": [
+        [
+          3085,
+          552
+        ],
+        [
+          194,
+          169
+        ]
+      ],
+      "f1": 0.3118081180811808,
+      "fraud_count": 363,
+      "illustrative_cost_per_transaction": 1.3505,
+      "precision": 0.23439667128987518,
+      "prevalence": 0.09075,
+      "recall": 0.465564738292011,
+      "roc_auc": 0.7316409022360482,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "input_perturbation_reference": {
+      "accuracy": 0.9,
+      "alert_count": 303,
+      "alert_rate": 0.07575,
+      "average_precision": 0.2014829205568367,
+      "confusion_matrix": [
+        [
+          3524,
+          227
+        ],
+        [
+          173,
+          76
+        ]
+      ],
+      "f1": 0.2753623188405797,
+      "fraud_count": 249,
+      "illustrative_cost_per_transaction": 1.138,
+      "precision": 0.2508250825082508,
+      "prevalence": 0.06225,
+      "recall": 0.30522088353413657,
+      "roc_auc": 0.7235585905338228,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "lower_prevalence": {
+      "accuracy": 0.9135,
+      "alert_count": 303,
+      "alert_rate": 0.07575,
+      "average_precision": 0.09290390513537794,
+      "confusion_matrix": [
+        [
+          3626,
+          275
+        ],
+        [
+          71,
+          28
+        ]
+      ],
+      "f1": 0.13930348258706468,
+      "fraud_count": 99,
+      "illustrative_cost_per_transaction": 0.5125,
+      "precision": 0.0924092409240924,
+      "prevalence": 0.02475,
+      "recall": 0.2828282828282828,
+      "roc_auc": 0.6884067540309529,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "missing_20_percent": {
+      "accuracy": 0.8415,
+      "alert_count": 569,
+      "alert_rate": 0.14225,
+      "average_precision": 0.15281099337093568,
+      "confusion_matrix": [
+        [
+          3274,
+          477
+        ],
+        [
+          157,
+          92
+        ]
+      ],
+      "f1": 0.22493887530562348,
+      "fraud_count": 249,
+      "illustrative_cost_per_transaction": 1.1005,
+      "precision": 0.1616871704745167,
+      "prevalence": 0.06225,
+      "recall": 0.36947791164658633,
+      "roc_auc": 0.67237116956228,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "reference": {
+      "accuracy": 0.89325,
+      "alert_count": 297,
+      "alert_rate": 0.07425,
+      "average_precision": 0.1440440377770435,
+      "confusion_matrix": [
+        [
+          3519,
+          243
+        ],
+        [
+          184,
+          54
+        ]
+      ],
+      "f1": 0.20186915887850468,
+      "fraud_count": 238,
+      "illustrative_cost_per_transaction": 1.21075,
+      "precision": 0.18181818181818182,
+      "prevalence": 0.0595,
+      "recall": 0.226890756302521,
+      "roc_auc": 0.6964659867136648,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "unseen_device": {
+      "accuracy": 0.80525,
+      "alert_count": 776,
+      "alert_rate": 0.194,
+      "average_precision": 0.19189215965300815,
+      "confusion_matrix": [
+        [
+          3098,
+          653
+        ],
+        [
+          126,
+          123
+        ]
+      ],
+      "f1": 0.24,
+      "fraud_count": 249,
+      "illustrative_cost_per_transaction": 0.95075,
+      "precision": 0.15850515463917525,
+      "prevalence": 0.06225,
+      "recall": 0.4939759036144578,
+      "roc_auc": 0.7208476668604571,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    }
+  },
+  "test_dummy": {
+    "accuracy": 0.943,
+    "alert_count": 0,
+    "alert_rate": 0.0,
+    "average_precision": 0.057,
+    "confusion_matrix": [
+      [
+        3772,
+        0
+      ],
+      [
+        228,
+        0
+      ]
+    ],
+    "f1": 0.0,
+    "fraud_count": 228,
+    "illustrative_cost_per_transaction": 1.425,
+    "precision": 0.0,
+    "prevalence": 0.057,
+    "recall": 0.0,
+    "roc_auc": 0.5,
+    "rows": 4000,
+    "threshold": 0.5
+  },
+  "test_errors_by_channel": {
+    "in_person": {
+      "accuracy": 0.9452449567723343,
+      "alert_count": 39,
+      "alert_rate": 0.028097982708933718,
+      "average_precision": 0.10316953523942579,
+      "confusion_matrix": [
+        [
+          1306,
+          33
+        ],
+        [
+          43,
+          6
+        ]
+      ],
+      "f1": 0.13636363636363635,
+      "fraud_count": 49,
+      "illustrative_cost_per_transaction": 0.7982708933717579,
+      "precision": 0.15384615384615385,
+      "prevalence": 0.035302593659942365,
+      "recall": 0.12244897959183673,
+      "roc_auc": 0.6326683025712151,
+      "rows": 1388,
+      "threshold": 0.12685403260249234
+    },
+    "online": {
+      "accuracy": 0.8728943338437979,
+      "alert_count": 243,
+      "alert_rate": 0.0930321592649311,
+      "average_precision": 0.17508267022766644,
+      "confusion_matrix": [
+        [
+          2235,
+          198
+        ],
+        [
+          134,
+          45
+        ]
+      ],
+      "f1": 0.2132701421800948,
+      "fraud_count": 179,
+      "illustrative_cost_per_transaction": 1.3583460949464012,
+      "precision": 0.18518518518518517,
+      "prevalence": 0.06852986217457886,
+      "recall": 0.25139664804469275,
+      "roc_auc": 0.6795642779564968,
+      "rows": 2612,
+      "threshold": 0.12685403260249234
+    }
+  },
+  "test_operating_points": {
+    "alert_budget": {
+      "accuracy": 0.921,
+      "alert_count": 160,
+      "alert_rate": 0.04,
+      "average_precision": 0.15778834591116608,
+      "confusion_matrix": [
+        [
+          3648,
+          124
+        ],
+        [
+          192,
+          36
+        ]
+      ],
+      "f1": 0.18556701030927836,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.231,
+      "precision": 0.225,
+      "prevalence": 0.057,
+      "recall": 0.15789473684210525,
+      "roc_auc": 0.6872325631151049,
+      "rows": 4000,
+      "threshold": 0.16266557937373916
+    },
+    "default_0.5": {
+      "accuracy": 0.943,
+      "alert_count": 0,
+      "alert_rate": 0.0,
+      "average_precision": 0.15778834591116608,
+      "confusion_matrix": [
+        [
+          3772,
+          0
+        ],
+        [
+          228,
+          0
+        ]
+      ],
+      "f1": 0.0,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.425,
+      "precision": 0.0,
+      "prevalence": 0.057,
+      "recall": 0.0,
+      "roc_auc": 0.6872325631151049,
+      "rows": 4000,
+      "threshold": 0.5
+    },
+    "f1": {
+      "accuracy": 0.898,
+      "alert_count": 282,
+      "alert_rate": 0.0705,
+      "average_precision": 0.15778834591116608,
+      "confusion_matrix": [
+        [
+          3541,
+          231
+        ],
+        [
+          177,
+          51
+        ]
+      ],
+      "f1": 0.2,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.164,
+      "precision": 0.18085106382978725,
+      "prevalence": 0.057,
+      "recall": 0.2236842105263158,
+      "roc_auc": 0.6872325631151049,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "high_recall": {
+      "accuracy": 0.499,
+      "alert_count": 2120,
+      "alert_rate": 0.53,
+      "average_precision": 0.15778834591116608,
+      "confusion_matrix": [
+        [
+          1824,
+          1948
+        ],
+        [
+          56,
+          172
+        ]
+      ],
+      "f1": 0.1465076660988075,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 0.837,
+      "precision": 0.08113207547169811,
+      "prevalence": 0.057,
+      "recall": 0.7543859649122807,
+      "roc_auc": 0.6872325631151049,
+      "rows": 4000,
+      "threshold": 0.039992550588616615
+    },
+    "illustrative_cost": {
+      "accuracy": 0.499,
+      "alert_count": 2120,
+      "alert_rate": 0.53,
+      "average_precision": 0.15778834591116608,
+      "confusion_matrix": [
+        [
+          1824,
+          1948
+        ],
+        [
+          56,
+          172
+        ]
+      ],
+      "f1": 0.1465076660988075,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 0.837,
+      "precision": 0.08113207547169811,
+      "prevalence": 0.057,
+      "recall": 0.7543859649122807,
+      "roc_auc": 0.6872325631151049,
+      "rows": 4000,
+      "threshold": 0.039992550588616615
+    }
+  },
+  "thresholds": {
+    "alert_budget": 0.16266557937373916,
+    "f1": 0.12685403260249234,
+    "high_recall": 0.039992550588616615,
+    "illustrative_cost": 0.039992550588616615
+  },
+  "validation_models": {
+    "dummy_prior": {
+      "accuracy": 0.943,
+      "alert_count": 0,
+      "alert_rate": 0.0,
+      "average_precision": 0.057,
+      "confusion_matrix": [
+        [
+          3772,
+          0
+        ],
+        [
+          228,
+          0
+        ]
+      ],
+      "f1": 0.0,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.425,
+      "precision": 0.0,
+      "prevalence": 0.057,
+      "recall": 0.0,
+      "roc_auc": 0.5,
+      "rows": 4000,
+      "threshold": 0.5
+    },
+    "hist_gradient_boosting": {
+      "accuracy": 0.943,
+      "alert_count": 0,
+      "alert_rate": 0.0,
+      "average_precision": 0.14541502233130804,
+      "confusion_matrix": [
+        [
+          3772,
+          0
+        ],
+        [
+          228,
+          0
+        ]
+      ],
+      "f1": 0.0,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.425,
+      "precision": 0.0,
+      "prevalence": 0.057,
+      "recall": 0.0,
+      "roc_auc": 0.7039055087347212,
+      "rows": 4000,
+      "threshold": 0.5
+    },
+    "logistic_regression": {
+      "accuracy": 0.94325,
+      "alert_count": 1,
+      "alert_rate": 0.00025,
+      "average_precision": 0.16495221512709152,
+      "confusion_matrix": [
+        [
+          3772,
+          0
+        ],
+        [
+          227,
+          1
+        ]
+      ],
+      "f1": 0.008733624454148471,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.41875,
+      "precision": 1.0,
+      "prevalence": 0.057,
+      "recall": 0.0043859649122807015,
+      "roc_auc": 0.7081031050585107,
+      "rows": 4000,
+      "threshold": 0.5
+    }
+  },
+  "validation_operating_points": {
+    "alert_budget": {
+      "accuracy": 0.92175,
+      "alert_count": 177,
+      "alert_rate": 0.04425,
+      "average_precision": 0.16495221512709152,
+      "confusion_matrix": [
+        [
+          3641,
+          131
+        ],
+        [
+          182,
+          46
+        ]
+      ],
+      "f1": 0.2271604938271605,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.17025,
+      "precision": 0.2598870056497175,
+      "prevalence": 0.057,
+      "recall": 0.20175438596491227,
+      "roc_auc": 0.7081031050585107,
+      "rows": 4000,
+      "threshold": 0.16266557937373916
+    },
+    "f1": {
+      "accuracy": 0.901,
+      "alert_count": 296,
+      "alert_rate": 0.074,
+      "average_precision": 0.16495221512709152,
+      "confusion_matrix": [
+        [
+          3540,
+          232
+        ],
+        [
+          164,
+          64
+        ]
+      ],
+      "f1": 0.24427480916030533,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 1.083,
+      "precision": 0.21621621621621623,
+      "prevalence": 0.057,
+      "recall": 0.2807017543859649,
+      "roc_auc": 0.7081031050585107,
+      "rows": 4000,
+      "threshold": 0.12685403260249234
+    },
+    "high_recall": {
+      "accuracy": 0.50675,
+      "alert_count": 2115,
+      "alert_rate": 0.52875,
+      "average_precision": 0.16495221512709152,
+      "confusion_matrix": [
+        [
+          1842,
+          1930
+        ],
+        [
+          43,
+          185
+        ]
+      ],
+      "f1": 0.1579172001707213,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 0.75125,
+      "precision": 0.08747044917257683,
+      "prevalence": 0.057,
+      "recall": 0.8114035087719298,
+      "roc_auc": 0.7081031050585107,
+      "rows": 4000,
+      "threshold": 0.039992550588616615
+    },
+    "illustrative_cost": {
+      "accuracy": 0.50675,
+      "alert_count": 2115,
+      "alert_rate": 0.52875,
+      "average_precision": 0.16495221512709152,
+      "confusion_matrix": [
+        [
+          1842,
+          1930
+        ],
+        [
+          43,
+          185
+        ]
+      ],
+      "f1": 0.1579172001707213,
+      "fraud_count": 228,
+      "illustrative_cost_per_transaction": 0.75125,
+      "precision": 0.08747044917257683,
+      "prevalence": 0.057,
+      "recall": 0.8114035087719298,
+      "roc_auc": 0.7081031050585107,
+      "rows": 4000,
+      "threshold": 0.039992550588616615
+    }
+  },
+  "validation_permutation_importance": {
+    "account_age_days": {
+      "ap_drop_mean": 0.0028280222375737705,
+      "ap_drop_std": 0.0025296073074480476
+    },
+    "amount": {
+      "ap_drop_mean": 0.00494769672281864,
+      "ap_drop_std": 0.005359416311804436
+    },
+    "channel": {
+      "ap_drop_mean": 0.0005126956802854465,
+      "ap_drop_std": 0.0004110081392510466
+    },
+    "device": {
+      "ap_drop_mean": 0.01145693193276597,
+      "ap_drop_std": 0.0020000185156259687
+    },
+    "distance_from_home_km": {
+      "ap_drop_mean": -3.885514632785229e-05,
+      "ap_drop_std": 7.41011491498635e-05
+    },
+    "foreign_country": {
+      "ap_drop_mean": 0.06602708707828174,
+      "ap_drop_std": 0.0031496199591673287
+    },
+    "hour": {
+      "ap_drop_mean": 0.007977074739639498,
+      "ap_drop_std": 0.0012001721557932665
+    },
+    "transactions_last_24h": {
+      "ap_drop_mean": 0.053045657840920336,
+      "ap_drop_std": 0.00034500339131517593
+    }
+  },
+  "validation_shuffled_label_control": {
+    "accuracy": 0.943,
+    "alert_count": 0,
+    "alert_rate": 0.0,
+    "average_precision": 0.058776078064983056,
+    "confusion_matrix": [
+      [
+        3772,
+        0
+      ],
+      [
+        228,
+        0
+      ]
+    ],
+    "f1": 0.0,
+    "fraud_count": 228,
+    "illustrative_cost_per_transaction": 1.425,
+    "precision": 0.0,
+    "prevalence": 0.057,
+    "recall": 0.0,
+    "roc_auc": 0.4649378616211791,
+    "rows": 4000,
+    "threshold": 0.5
+  }
+}

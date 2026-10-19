@@ -1,0 +1,22 @@
+[
+  {
+    "amount": 89.5,
+    "account_age_days": 720,
+    "hour": 14,
+    "transactions_last_24h": 2,
+    "distance_from_home_km": 8.2,
+    "foreign_country": 0,
+    "device": "mobile",
+    "channel": "online"
+  },
+  {
+    "amount": 520.0,
+    "account_age_days": 12,
+    "hour": 3,
+    "transactions_last_24h": 8,
+    "distance_from_home_km": null,
+    "foreign_country": 1,
+    "device": "wearable",
+    "channel": "online"
+  }
+]

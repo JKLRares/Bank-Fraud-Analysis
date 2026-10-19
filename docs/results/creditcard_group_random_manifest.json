@@ -1,0 +1,25 @@
+{
+  "files_sha256": {
+    "capacity_reliability.png": "bda312e0501ca0e5fb56e9dfcc4da17fc1e286c8490396a565a7f5dc3b212809",
+    "report.json": "a9f8bcc46ef2e5563944c84a6be90be824dd11b13d0c93a6efd2427a75266e15",
+    "report.md": "f78eb03792656101e788613b4274b18992efd8b39c0d671495cdc26cb1537f5b",
+    "test_performance.png": "ff613f85d5e875140cb7636e752045c057831d73541a2ba543fe89e795d6fc06",
+    "test_scores.csv": "4091bdf48141675af9a533d8b7dfa15d9691c9a3625ca1d2cb142724e08de8dd"
+  },
+  "source_sha256": {
+    "__init__.py": "223c5ce77be7e460d01e72983ec8ee38019dcd4b0f7db512b3983327ad1a107c",
+    "__main__.py": "157d9b2a26301ae076eff949129f01f92fb333496d4a683aaccc6392cc2ac8db",
+    "artifacts.py": "258d3727fdfcd429595430cd851b431f61e1cacf55cb300cb5700c30245892ef",
+    "cli.py": "442963769d53de6829e6b987dba35da30f950da1eb81c3f07c3cce5ad17b014a",
+    "credit_data.py": "2ce17234d0e9ce35d1ecc4ec3f186383775ea1a15d945e09c697b1a6faa2fdd5",
+    "credit_experiment.py": "f2f5c125ae0e44bf302a8a587d7b387db71b849d34f28e61c6e20c24525a70f9",
+    "credit_reporting.py": "000fca0f90732e4c0da9a33406adc8145daf2728c98b1cbe325227da31d033bd",
+    "data.py": "293b95d37de775c7b2dd67cdd7223b6233ef4e6017682980bef75b36fd24d1bd",
+    "diagnostics.py": "c17cf49851ff0cdc4e8b556b14a744d42e04f610ea236a7f14930a686be85f82",
+    "evaluation.py": "2b3b1fb27ade8cc00f287f90000969db9807947c52b4b031f9d0184889ef4629",
+    "experiment.py": "57e7375e4a34c1a3080c8903543672c6e7a92ab5b9c1adfe997c0bb73d0b1a57",
+    "models.py": "65692902d167f147b0b094df491a8b7b48ea7e7f89010d733eb985c1bad7ad19",
+    "prioritization.py": "5a6d9019576880d82ee520063e2925efdada35642b340684139504dbe6d400a2",
+    "schema.py": "23d8af5bded36b80e9330057d717081433a4db471ddc7a25c282bc0163384c60"
+  }
+}
