@@ -1,0 +1,23 @@
+{
+  "files_sha256": {
+    "confusion_matrix.png": "dc97e88f9c54a6b396d1f0545b5cdb4418ebdb7c972dc8f131f5aaed313f3abd",
+    "data.csv": "827c931751a1d475f8938f01c1139a08ade0400200265b57ddc5bb0809d6c98e",
+    "model.joblib": "cd6223a88563888838cb98d892b41f4046ba52ff7e2bd6789c55bdcd0215ba0a",
+    "precision_recall.png": "fc11292252390fc4ed6147934904d038d044a8a9dbed94e3e538139dd80cdaa5",
+    "report.json": "22dbe6b781dcb5d1e7c0c63649266ce9a0902bf899c8ea1a5af55d7fb6ee0be0",
+    "selection.json": "d8f335ce118dd287ce20fabf391ffcd94cf7fc8f52767e290650cd3e869c070c",
+    "split_membership.json": "24699949d1c4ccd767b2e494a6820145d08964b0bd7b987d9455428311a4b6b4",
+    "test_predictions.csv": "f8ead76eaf5164b21ad50bf6a30fa530c852a594680da9959b7bc851fdb749bf"
+  },
+  "source_sha256": {
+    "__init__.py": "7ff3229a56a2924aab637559e2b550d8bea47ed828f6fc158b80fbf3f079449b",
+    "__main__.py": "157d9b2a26301ae076eff949129f01f92fb333496d4a683aaccc6392cc2ac8db",
+    "artifacts.py": "ab22989cd82c726b292d22d39098c60d606ea040bbdb36bc29b80c5e740c2718",
+    "cli.py": "5de52dfaa92f1e800357d106136bd323439f3d91096b0496feb21b0e7b3888eb",
+    "data.py": "293b95d37de775c7b2dd67cdd7223b6233ef4e6017682980bef75b36fd24d1bd",
+    "evaluation.py": "2b3b1fb27ade8cc00f287f90000969db9807947c52b4b031f9d0184889ef4629",
+    "experiment.py": "d952ac6c4ac637c7673505b95f2618ca611a0edad5acfd98770db5f8d784cda0",
+    "models.py": "c822cab0bdea318d1f065ab380273e37b63434ff69f33b08586e2e89b2334f23",
+    "schema.py": "058bb3c6b485006fd38f81db471abe00f047f4ed87279988693b7fd3aa1f8fbf"
+  }
+}

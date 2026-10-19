@@ -1,0 +1,46 @@
+name: Python verification
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.12"]
+    env:
+      MPLBACKEND: Agg
+      MPLCONFIGDIR: ${{ runner.temp }}/matplotlib
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install locked dependencies and local package
+        run: |
+          python -m pip install -r requirements.lock
+          python -m pip install --no-deps --no-build-isolation -e .
+          python -m pip check
+      - name: Static checks
+        run: |
+          ruff check src tests scripts
+          ruff format --check src tests scripts
+      - name: Fast deterministic tests
+        run: python -m pytest -q
+      - name: Build source distribution and wheel
+        run: python -m build --no-isolation
+      - name: Install wheel and run outside the source checkout
+        run: |
+          python -m pip uninstall -y bank-fraud-analysis
+          python -m pip install --no-deps dist/*.whl
+          cd "$RUNNER_TEMP"
+          fraud-benchmark run --rows 1200 --seed 2026 --output smoke
+          fraud-benchmark predict --model smoke/model.joblib --input "$GITHUB_WORKSPACE/examples/transactions.json" --output smoke-predictions.json
+          python "$GITHUB_WORKSPACE/scripts/smoke_creditcard.py" --output "$RUNNER_TEMP/creditcard-smoke"
