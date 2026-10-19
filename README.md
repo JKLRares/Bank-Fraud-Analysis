@@ -222,18 +222,3 @@ and threshold selection, label-free ranking, capacity ties/failures, hand-calcul
 group-bootstrap equivalence, serialization, tampering, inference consistency and output preservation.
 GitHub Actions targets Python 3.10/3.12, builds distributions, installs the wheel, and runs both
 synthetic and real-schema fixture smoke workflows outside the checkout.
-
-## Historical work and limitations
-
-The original `generate_data.py`, `split_data.py`, `EDA.py`, CSVs, PDF and reports remain
-unchanged. The earlier [synthetic benchmark](docs/SYNTHETIC_BENCHMARK.md), [data card](docs/DATA_CARD.md)
-and [coursework audit](docs/AUDIT.md) remain accessible. Its invented relationships and scores
-are background, not evidence for real-data effectiveness. `fraud-benchmark run` still runs
-that simulation; `scripts/audit_original.py` audits the original coursework safely.
-
-Only two historical days and 492 original fraud examples are available. Exact-input groups
-cannot reveal unknown card dependence. Validation jointly selects models and policies, and
-its 57 chronological positives give noisy estimates. Bootstrap intervals exclude training,
-selection and future-distribution uncertainty. Relative-time ordering assumes prior labels
-are available; real label delays, interventions, review outcomes and deployment are absent.
-These constraints limit conclusions to the documented historical benchmark.
