@@ -1,0 +1,9 @@
+include README.md requirements.lock
+recursive-include tests *.py
+recursive-include scripts *.py
+recursive-include examples *.json
+recursive-include docs *.md *.json *.png
+recursive-include .github/workflows *.yml
+global-exclude *.py[cod]
+prune data
+prune artifacts

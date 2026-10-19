@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools==75.8.2", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bank-fraud-analysis"
+version = "0.3.0"
+description = "Reproducible fraud risk scoring and capacity-constrained alert prioritization"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.13.1",
+  "pandas==2.2.3",
+  "scikit-learn==1.6.1",
+  "joblib==1.4.2",
+  "threadpoolctl==3.6.0",
+  "matplotlib==3.9.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5", "ruff==0.11.10", "build==1.2.2.post1"]
+
+[project.scripts]
+fraud-benchmark = "fraud_benchmark.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py", "scripts/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
